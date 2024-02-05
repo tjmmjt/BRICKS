@@ -20,7 +20,7 @@ function AddSet() {
 
         axios.get(`/api/search/${id}`)
         .then(result => {
-            setLego(result)
+            setLego(result.data)
         })
         .catch(err => {
             alert("Error Searching, make sure you are entering correct LEGO ID!")
