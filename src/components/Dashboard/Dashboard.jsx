@@ -1,7 +1,7 @@
 
 
 function Dashboard(props) {
-
+    
     return (
         <>
             <h2>Welcome, {props.user.username}!</h2>
