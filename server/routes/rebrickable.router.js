@@ -6,13 +6,15 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
   // GET route code here
   // get api data
   // start with static code to test with postman
     const apiKey=process.env.REBRICKABLE_KEY
+    const params = [req.params.id]
+    console.log("REQ.PARAMS", params)
 
-    axios.get(`https://rebrickable.com/api/v3/lego/sets/40649-1?key=${apiKey}`)
+    axios.get(`https://rebrickable.com/api/v3/lego/sets/${params}-1?key=${apiKey}`)
     .then(response => {
         console.log(response.data)
         res.send(response.data)
