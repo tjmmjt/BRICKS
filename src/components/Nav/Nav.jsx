@@ -28,6 +28,10 @@ function Nav() {
               Home
             </Link>
 
+            <Link className="navLink" to="/add_set">
+              Add Set
+            </Link>
+
             <Link className="navLink" to="/info">
               Info Page
             </Link>
@@ -35,6 +39,8 @@ function Nav() {
             <LogOutButton className="navLink" />
           </>
         )}
+
+        
 
         <Link className="navLink" to="/about">
           About

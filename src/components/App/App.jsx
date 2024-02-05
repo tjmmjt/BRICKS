@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
+import AddSet from '../AddSet/AddSet';
 
 function App() {
   const dispatch = useDispatch();
@@ -66,6 +67,15 @@ function App() {
             path="/info"
           >
             <InfoPage />
+          </ProtectedRoute>
+
+          // ! Add Set
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/add_set"
+          >
+            <AddSet />
           </ProtectedRoute>
 
           <Route
