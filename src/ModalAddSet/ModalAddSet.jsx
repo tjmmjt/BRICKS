@@ -34,9 +34,9 @@ export default function ModalAddSet(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h4" component="h2">
-            {props.lego.name}
+            {props.searchResult.name}
           </Typography>
-          <img src={props.lego.set_img_url} alt={props.lego.name} />
+          <img src={props.searchResult.set_img_url} alt={props.searchResult.name} />
           <Button variant='contained' color='success' sx={{mt: 2}}>Add</Button>
         </Box>
       </Modal>
