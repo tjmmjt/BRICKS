@@ -13,18 +13,15 @@ import { useDispatch, useSelector } from "react-redux";
     // image, name, set number, total pieces, genre number, etc.
 
 function AddSet() {
-  // local state for storing API result
+  // local state for storing input ID
   const [id, setId] = useState("");
   // local state for modal open/close boolean
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   // history
   const history = useHistory();
-  // redux initialize dispatch and useSelector
+  // redux initialize dispatch
   const dispatch = useDispatch()
-  const searchResult = useSelector(store => store.searchReducer)
-
-//   console.log('searchResult:', searchResult)
 
   const handleSearch = async (event) => {
     event.preventDefault();
@@ -54,7 +51,7 @@ function AddSet() {
         </form>
       </Box>
 
-      <ModalAddSet searchResult={searchResult} open={open} close={() => setOpen(false)} />
+      <ModalAddSet open={open} close={() => setOpen(false)} />
     </>
   );
 }

@@ -21,7 +21,7 @@ function* addSet(action){
     // combine user and search result into an array which can be accessed in router by key
     // const payload = useSelector(store => ({searchReducer: store.searchReducer, user: store.user}))
     yield console.log("Payload:", action.payload)
-    // yield axios.post('/api/gallery', action.payload)
+    yield axios.post('/api/gallery', action.payload)
 }
 
 

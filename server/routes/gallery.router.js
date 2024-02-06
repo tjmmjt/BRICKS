@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
 		$6,
 		$7,
 		$8,
-		$9'
+		$9
 	);
     `
     const user = req.body.user

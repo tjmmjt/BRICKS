@@ -24,14 +24,15 @@ function ModalAddSet(props) {
   // const handleClose = () => setOpen(false);
   // ? Moved local state to <AddSet /> where handleSearch() => setOpen(true)
 
+  // initialize dispatch and useSelector with search and user data
   const dispatch = useDispatch()
-  const searchResult = useSelector(store => store.searchReducer)
+  const searchReducer = useSelector(store => store.searchReducer)
   const user = useSelector(store => store.user)
 
   const handleAdd = (event) => {
     event.preventDefault()
-    // must send a payload, cannot use useSelector hook within saga generator function
-    const payload = {searchResult: searchResult, user: user}
+    // must send a payload, tried using useSelector hook in saga gen func and it errored for breaking rules of hooks
+    const payload = {searchReducer: searchReducer, user: user}
     dispatch({type: 'ADD_SET', payload})
   }
 
@@ -45,9 +46,9 @@ function ModalAddSet(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h4" component="h2">
-            {searchResult.name}
+            {searchReducer.name}
           </Typography>
-          <img src={searchResult.set_img_url} alt={searchResult.name} />
+          <img src={searchReducer.set_img_url} alt={searchReducer.name} />
           <Button onClick={handleAdd} variant='contained' color='success' sx={{mt: 2}}>Add</Button>
         </Box>
       </Modal>
