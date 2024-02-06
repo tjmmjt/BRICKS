@@ -26,6 +26,8 @@ function AddSet() {
             alert("Error Searching, make sure you are entering correct LEGO ID!")
             console.error("Error Searching:", err)
         })
+
+        // setLego('')
     }
 
     console.log('id:', id)
@@ -35,7 +37,7 @@ function AddSet() {
         <>
             <h2>Add Set</h2>
             <form onSubmit={handleSearch}>
-                <input type="text" onChange={(event) => setId(event.target.value)}/>
+                <input type="text" value={lego} onChange={(event) => setId(event.target.value)}/>
                 <button type="submit">Search</button>
             </form>        
         </>
