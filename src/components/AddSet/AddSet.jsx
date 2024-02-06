@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
-
+import ModalAddSet from "../../ModalAddSet/ModalAddSet"
 
 function AddSet() {
     // this page will have a form with an input and button
@@ -12,32 +12,43 @@ function AddSet() {
     
     // local state for storing API result
     const [id, setId] = useState('')
-    const [lego, setLego] = useState()
+    const [lego, setLego] = useState({})
+    // local state for modal open/close boolean
+    const [open, setOpen] = useState(false);
+    const handleClose = () => setOpen(false);
 
-    const handleSearch = (event) => {
+    const handleSearch = async (event) => {
         event.preventDefault()
-        console.log('in handleSearch()')
-
+        // API request by set ID
         axios.get(`/api/search/${id}`)
         .then(result => {
+            // setLego to the searched LEGO set
             setLego(result.data)
         })
         .catch(err => {
+            // alert user if search is bad
             alert("Error Searching, make sure you are entering correct LEGO ID!")
             console.error("Error Searching:", err)
         })
+        // reset input
+        setId('')
+        // setOpen(true) to open Modal
+        setOpen(true);
     }
 
-    console.log('id:', id)
-    console.log('lego:', lego)
+    // TESTING
+    // console.log('id:', id)
+    // console.log('lego:', lego)
 
     return (
         <>
             <h2>Add Set</h2>
             <form onSubmit={handleSearch}>
-                <input type="text" onChange={(event) => setId(event.target.value)}/>
+                <input type="text" value={id} onChange={(event) => setId(event.target.value)}/>
                 <button type="submit">Search</button>
-            </form>        
+            </form>
+            
+            <ModalAddSet lego={lego} open={open} close={() => setOpen(false)} />
         </>
     )
     
