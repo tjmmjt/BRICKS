@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
 import AddSet from '../AddSet/AddSet';
+import Gallery from '../Gallery/Gallery';
 
 function App() {
   const dispatch = useDispatch();
@@ -76,6 +77,14 @@ function App() {
             path="/add_set"
           >
             <AddSet />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows UserPage else shows LoginPage
+            exact
+            path="/gallery"
+          >
+            <Gallery />
           </ProtectedRoute>
 
           <Route

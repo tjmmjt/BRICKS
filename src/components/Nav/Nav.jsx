@@ -32,6 +32,10 @@ function Nav() {
               Add Set
             </Link>
 
+            <Link className="navLink" to="/gallery">
+              Gallery
+            </Link>
+
             <Link className="navLink" to="/info">
               Info Page
             </Link>
