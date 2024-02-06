@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const style = {
   position: 'absolute',
@@ -28,12 +29,14 @@ function ModalAddSet(props) {
   const dispatch = useDispatch()
   const searchReducer = useSelector(store => store.searchReducer)
   const user = useSelector(store => store.user)
+  const history = useHistory()
 
   const handleAdd = (event) => {
     event.preventDefault()
     // must send a payload, tried using useSelector hook in saga gen func and it errored for breaking rules of hooks
     const payload = {searchReducer: searchReducer, user: user}
     dispatch({type: 'ADD_SET', payload})
+    history.push('/gallery')
   }
 
   return (
