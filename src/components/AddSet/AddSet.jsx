@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import ModalAddSet from "../../ModalAddSet/ModalAddSet";
+import ModalAddSet from "./ModalAddSet";
 import { Button, Card, CardActions, CardContent, CardHeader, Container, Input, TextField, Typography } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
