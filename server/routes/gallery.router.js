@@ -61,5 +61,21 @@ router.get('/', (req, res) => {
   })
 })
 
+router.delete('/:id', (req, res) => {
+  const queryText = `
+    DELETE FROM "gallery_item"
+    WHERE id=($1);
+  `
+  const queryParams = [req.params.id]
+  pool.query(queryText, queryParams)
+  .then(result => {
+    res.sendStatus(200)
+  })
+  .catch(err => {
+    console.error('Error deleting set', err)
+    res.sendStatus(500)
+  })
+})
+
 
 module.exports = router;

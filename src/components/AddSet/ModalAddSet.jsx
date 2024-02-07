@@ -20,11 +20,6 @@ const style = {
 };
 
 function ModalAddSet(props) {
-  // const [open, setOpen] = useState(false);
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
-  // ? Moved local state to <AddSet /> where handleSearch() => setOpen(true)
-
   // initialize dispatch and useSelector with search and user data
   const dispatch = useDispatch()
   const searchReducer = useSelector(store => store.searchReducer)
