@@ -17,10 +17,18 @@ function Gallery() {
     <>
       <Container>
         <h2>Gallery</h2>
-        <Grid container>
+        <Grid container spacing={3}>
           {store.map((set, i) => (
-            <Grid item key={i} xs={6} md={4} lg={3}>
-                <GalleryCard image={set.set_img_url} name={set.name} genre={set.theme_id} pieces={set.num_parts} />
+            <Grid item key={i} xs={12} sm={6} md={4} lg={3}>
+                <GalleryCard 
+                  raised
+                  setnumber={set.set_num} 
+                  image={set.set_img_url} 
+                  name={set.name} 
+                  genre={set.theme_id} 
+                  pieces={set.num_parts}
+                  year={set.year} 
+                />
             </Grid>
           ))}
         </Grid>

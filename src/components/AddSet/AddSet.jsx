@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import ModalAddSet from "../../ModalAddSet/ModalAddSet";
-import { Box } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardHeader, Container, Input, TextField, Typography } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -39,8 +39,36 @@ function AddSet() {
 
   return (
     <>
-      <Box>
-        <h2>Add Set</h2>
+    <Container>
+      
+      <Card sx={{ maxWidth: 345, m: 'auto', p: 2}}>
+        <CardHeader title="Add Set" />
+        <CardContent sx={{pt: 0.5}}>
+          <Typography variant="body2">
+            Locate and enter your LEGO set number. This can be 
+            found on the front of most LEGO set boxes and is typically 
+            5 digits.
+          </Typography>
+        </CardContent>
+        <CardActions sx={{px: 2.5}}>
+          <form onSubmit={handleSearch}>
+              <Input
+                variant="outlined"
+                placeholder="LEGO Set Number"
+                type="text"
+                value={id}
+                onChange={(event) => setId(event.target.value)}
+              />
+              <Button onClick={handleSearch} variant="contained" size="small" sx={{mx: 1}}>Search</Button>
+            </form>
+        </CardActions>
+      </Card>
+
+    </Container>
+
+
+      {/* <Container>
+        <Grid container>
         <form onSubmit={handleSearch}>
           <input
             type="text"
@@ -49,7 +77,8 @@ function AddSet() {
           />
           <button type="submit">Search</button>
         </form>
-      </Box>
+        </Grid>
+      </Container> */}
 
       <ModalAddSet open={open} close={() => setOpen(false)} />
     </>
