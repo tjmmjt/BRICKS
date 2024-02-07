@@ -7,13 +7,21 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import GalleryDeleteModal from "./GalleryDeleteModal";
+import GalleryUpdateModal from "./GalleryUpdateModal";
 
 function GalleryCard({ set }) {
   const dispatch = useDispatch()
 
-  const [open, setOpen] = useState(false);
-  const promptDelete = () => setOpen(true)
-  const handleClose = () => setOpen(false);
+  // Delete Modal state/prompts
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const promptDelete = () => setDeleteOpen(true)
+  const handleDeleteClose = () => setDeleteOpen(false);
+
+  // Update Modal state/prompts
+  const [updateOpen, setUpdateOpen] = useState(false);
+  const promptUpdate = () => setUpdateOpen(true)
+  const handleUpdateClose = () => setUpdateOpen(false);
+
 
   return (
   <>
@@ -44,7 +52,7 @@ function GalleryCard({ set }) {
         <IconButton aria-label="add comments">
           <AddCommentIcon fontSize="large" />
         </IconButton>
-        <IconButton aria-label="edit">
+        <IconButton onClick={promptUpdate} aria-label="edit">
           <EditIcon fontSize="large" />
         </IconButton>
         <IconButton onClick={promptDelete} aria-label="delete">
@@ -53,7 +61,8 @@ function GalleryCard({ set }) {
       </CardActions>
     </Card>
 
-    <GalleryDeleteModal open={open} close={handleClose} id={set.id}/>
+    <GalleryDeleteModal open={deleteOpen} close={handleDeleteClose} id={set.id}/>
+    <GalleryUpdateModal open={updateOpen} close={handleUpdateClose} set={set}/>
   </>
   );
 }
