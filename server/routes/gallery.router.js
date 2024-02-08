@@ -93,8 +93,8 @@ router.patch('/', (req, res) => {
       lego.theme_id,
       lego.id
     ];
-    console.log('req.body', req.body)
-    console.log('queryParams:', queryParams)
+    // console.log('req.body', req.body)
+    // console.log('queryParams:', queryParams)
     pool
       .query(queryText, queryParams)
       .then((result) => {
@@ -105,6 +105,24 @@ router.patch('/', (req, res) => {
         res.sendStatus(500);
       });
   });
+
+  router.patch('/comments', (req, res) => {
+    const queryText = `
+      UPDATE "gallery_item"
+      SET comments = $2
+      WHERE id=$1
+    `
+    const queryParams = [req.body.id, req.body.comments]
+
+    pool.query(queryText, queryParams)
+    .then(result => {
+      res.sendStatus(201)
+    })
+    .catch(err => {
+      console.error('Error updating comments:', err)
+      res.sendStatus(500)
+    })
+  })
 
 
 module.exports = router;

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import GalleryCard from "./GalleryCard";
 
 function Gallery() {
-  console.log("in Gallery()");
+  // console.log("in Gallery()");
   const dispatch = useDispatch();
   const store = useSelector((store) => store.galleryReducer);
   // console.log('galleryReducer', store)

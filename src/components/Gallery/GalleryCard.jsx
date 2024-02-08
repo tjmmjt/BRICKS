@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import GalleryDeleteModal from "./GalleryDeleteModal";
 import GalleryUpdateModal from "./GalleryUpdateModal";
+import GalleryCommentsModal from "./GalleryCommentsModal";
 
 function GalleryCard({ set }) {
   const dispatch = useDispatch()
@@ -18,9 +19,14 @@ function GalleryCard({ set }) {
   const handleDeleteClose = () => setDeleteOpen(false);
 
   // Update Modal state/prompts
-  const [updateOpen, setUpdateOpen] = useState(false);
-  const promptUpdate = () => setUpdateOpen(true);
-  const handleUpdateClose = () => setUpdateOpen(false);
+  const [updateModalOpen, setUpdateModalOpen] = useState(false);
+  const promptUpdate = () => setUpdateModalOpen(true);
+  const closeUpdateModal = () => setUpdateModalOpen(false);
+
+  // Comments Modal state/prompts
+  const [commentsModalOpen, setCommentsModalOpen] = useState(false);
+  const promptComments = () => setCommentsModalOpen(true);
+  const closeCommentsModal = () => setCommentsModalOpen(false);
 
 
   return (
@@ -42,14 +48,14 @@ function GalleryCard({ set }) {
         <Typography variant="body1"><b>Genre:</b> {set.theme_id}</Typography>
         <Typography variant="body1"><b>Comments:</b></Typography>
         <Typography variant="body2" color="text.secondary">
-            ...add comments here
+            {set.comments}
         </Typography>
       </CardContent>
       <CardActions sx={{display: 'flex', justifyContent: 'center'}}>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon fontSize="large" />
         </IconButton>
-        <IconButton aria-label="add comments">
+        <IconButton onClick={promptComments} aria-label="add comments">
           <AddCommentIcon fontSize="large" />
         </IconButton>
         <IconButton onClick={promptUpdate} aria-label="edit">
@@ -61,8 +67,9 @@ function GalleryCard({ set }) {
       </CardActions>
     </Card>
 
-    <GalleryDeleteModal open={deleteOpen} close={handleDeleteClose} id={set.id}/>
-    <GalleryUpdateModal open={updateOpen} close={handleUpdateClose} set={set}/>
+    <GalleryDeleteModal open={deleteOpen} close={handleDeleteClose} id={set.id} />
+    <GalleryUpdateModal updateModalOpen={updateModalOpen} closeUpdateModal={closeUpdateModal} set={set} />
+    <GalleryCommentsModal commentsModalOpen={commentsModalOpen} closeCommentsModal={closeCommentsModal} set={set} />
   </>
   );
 }
