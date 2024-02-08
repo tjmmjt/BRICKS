@@ -14,12 +14,12 @@ function GalleryCard({ set }) {
 
   // Delete Modal state/prompts
   const [deleteOpen, setDeleteOpen] = useState(false);
-  const promptDelete = () => setDeleteOpen(true)
+  const promptDelete = () => setDeleteOpen(true);
   const handleDeleteClose = () => setDeleteOpen(false);
 
   // Update Modal state/prompts
   const [updateOpen, setUpdateOpen] = useState(false);
-  const promptUpdate = () => setUpdateOpen(true)
+  const promptUpdate = () => setUpdateOpen(true);
   const handleUpdateClose = () => setUpdateOpen(false);
 
 

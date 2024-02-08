@@ -6,10 +6,9 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import UpgradeIcon from "@mui/icons-material/Upgrade";
 import { useState } from "react";
-import { Label } from "@mui/icons-material";
 
 const style = {
   position: "absolute",
@@ -30,17 +29,17 @@ function GalleryUpdateModal({ open, close, set }) {
   const dispatch = useDispatch();
   // local state for storing inputs
   const [input, setInput] = useState({
-    id: set.id,
     name: set.name,
     num_parts: set.num_parts,
     year: set.year,
-    theme_id: set.theme_id
+    theme_id: set.theme_id,
+    id: set.id,
   });
 
   const handleUpdate = () => {
     const payload = input;
     dispatch({ type: "UPDATE_SET", payload });
-    close
+    close;
   };
 
   return (
@@ -52,7 +51,12 @@ function GalleryUpdateModal({ open, close, set }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h4" component="h2" gutterBottom>
+          <Typography
+            id="modal-modal-title"
+            variant="h4"
+            component="h2"
+            gutterBottom
+          >
             Update:
           </Typography>
           <form>
@@ -79,21 +83,23 @@ function GalleryUpdateModal({ open, close, set }) {
             />
             <TextField
               id="update-year"
+              type="number"
               label="Year"
               variant="standard"
               defaultValue={set.year}
               onChange={(event) =>
-                setInput({ ...input, year: event.target.value })
+                setInput({ ...input, year: Number(event.target.value) })
               }
               sx={{ m: 1 }}
             />
             <TextField
               id="update-genre"
+              type="number"
               label="Genre"
               variant="standard"
               defaultValue={set.theme_id}
               onChange={(event) =>
-                setInput({ ...input, theme_id: event.target.value })
+                setInput({ ...input, theme_id: Number(event.target.value) })
               }
               sx={{ m: 1 }}
             />
