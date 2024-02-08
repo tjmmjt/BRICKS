@@ -2,9 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../modules/pool");
 
-// when user searches LEGO set, modal appears with option to Add to their gallery
-// when Added, the LEGO set and user data are posted to bricks database gallery_item table
-
+// Add a new LEGO set to gallery_items with user.id
 router.post("/", (req, res) => {
   const queryText = `
     INSERT INTO "gallery_item" (
@@ -46,83 +44,95 @@ router.post("/", (req, res) => {
     });
 });
 
-
-router.get('/', (req, res) => {
+// get all LEGO sets back
+// TODO get only the LEGO sets for the specific user
+router.get("/", (req, res) => {
   const queryText = `
     SELECT * FROM "gallery_item";
-  `
-  pool.query(queryText)
-  .then(result => {
-    res.send(result.rows)
-  })
-  .catch(err => {
-    console.error('Error Getting Gallery', err);
-    res.sendStatus(500)
-  })
-})
+  `;
+  pool
+    .query(queryText)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.error("Error Getting Gallery", err);
+      res.sendStatus(500);
+    });
+});
 
-router.delete('/:id', (req, res) => {
+// Delete a LEGO set by ID.
+// TODO add condition for user.id --
+// WHERE id=$1 && user.id=$2
+router.delete("/:id", (req, res) => {
   const queryText = `
     DELETE FROM "gallery_item"
     WHERE id=($1);
-  `
-  const queryParams = [req.params.id]
-  pool.query(queryText, queryParams)
-  .then(result => {
-    res.sendStatus(200)
-  })
-  .catch(err => {
-    console.error('Error deleting set', err)
-    res.sendStatus(500)
-  })
-})
+  `;
+  const queryParams = [req.params.id];
+  pool
+    .query(queryText, queryParams)
+    .then((result) => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.error("Error deleting set", err);
+      res.sendStatus(500);
+    });
+});
 
-router.patch('/', (req, res) => {
-    const queryText = `
+// Update data for specific LEGO set
+// TODO add condition for user.id --
+// WHERE id=$1 && user.id=$2
+router.patch("/", (req, res) => {
+  const queryText = `
     UPDATE "gallery_item"
       SET (name, num_parts, year, theme_id) = ($1, $2, $3, $4)
       WHERE id=$5;
       `;
-  
-    const lego = req.body;
 
-    const queryParams = [
-      lego.name,
-      lego.num_parts,
-      lego.year,
-      lego.theme_id,
-      lego.id
-    ];
-    // console.log('req.body', req.body)
-    // console.log('queryParams:', queryParams)
-    pool
-      .query(queryText, queryParams)
-      .then((result) => {
-        res.sendStatus(201);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.sendStatus(500);
-      });
-  });
+  const lego = req.body;
 
-  router.patch('/comments', (req, res) => {
-    const queryText = `
+  const queryParams = [
+    lego.name,
+    lego.num_parts,
+    lego.year,
+    lego.theme_id,
+    lego.id,
+  ];
+  // console.log('req.body', req.body)
+  // console.log('queryParams:', queryParams)
+  pool
+    .query(queryText, queryParams)
+    .then((result) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+});
+
+// Update comments for specific LEGO set
+// TODO add condition for user.id --
+// WHERE id=$1 && user.id=$2
+router.patch("/comments", (req, res) => {
+  const queryText = `
       UPDATE "gallery_item"
       SET comments = $2
       WHERE id=$1
-    `
-    const queryParams = [req.body.id, req.body.comments]
+    `;
+  const queryParams = [req.body.id, req.body.comments];
 
-    pool.query(queryText, queryParams)
-    .then(result => {
-      res.sendStatus(201)
+  pool
+    .query(queryText, queryParams)
+    .then((result) => {
+      res.sendStatus(201);
     })
-    .catch(err => {
-      console.error('Error updating comments:', err)
-      res.sendStatus(500)
-    })
-  })
-
+    .catch((err) => {
+      console.error("Error updating comments:", err);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;
