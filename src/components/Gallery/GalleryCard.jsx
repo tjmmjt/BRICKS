@@ -48,7 +48,7 @@ function GalleryCard({ set }) {
         <Typography variant="body1"><b>Genre:</b> {set.theme_id}</Typography>
         <Typography variant="body1"><b>Comments:</b></Typography>
         <Typography variant="body2" color="text.secondary">
-            ...add comments here
+            {set.comments}
         </Typography>
       </CardContent>
       <CardActions sx={{display: 'flex', justifyContent: 'center'}}>

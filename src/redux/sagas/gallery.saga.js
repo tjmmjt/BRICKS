@@ -30,6 +30,8 @@ function* updateSet(action){
 
 function* updateComments(action) {
   console.log('in updateComments(*), action.payload:', action.payload)
+  yield axios.patch(`/api/gallery/comments`, action.payload)
+  yield put({type: 'FETCH_GALLERY'})
 }
 
 function* gallerySaga(action) {
