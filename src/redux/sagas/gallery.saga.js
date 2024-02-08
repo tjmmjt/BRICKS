@@ -28,10 +28,15 @@ function* updateSet(action){
   yield put({type: 'FETCH_GALLERY'})
 }
 
+function* updateComments(action) {
+  console.log('in updateComments(*), action.payload:', action.payload)
+}
+
 function* gallerySaga(action) {
   yield takeLatest('FETCH_GALLERY', fetchGallery);
   yield takeLatest('DELETE_SET', deleteSet)
   yield takeLatest('UPDATE_SET', updateSet)
+  yield takeLatest('UPDATE_COMMENTS', updateComments)
 }
 
 export default gallerySaga;

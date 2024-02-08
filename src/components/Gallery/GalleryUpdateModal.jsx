@@ -38,22 +38,17 @@ function GalleryUpdateModal({ updateModalOpen, closeUpdateModal, set }) {
 
   const handleUpdate = async () => {
     const payload = input;
-    dispatch({ type: "UPDATE_SET", payload })
+    dispatch({ type: "UPDATE_SET", payload });
   };
-
-  
 
   return (
     <div>
-      <Modal
-        open={updateModalOpen}
-        onClose={closeUpdateModal}
-      >
+      <Modal open={updateModalOpen} onClose={closeUpdateModal}>
         <Box sx={style}>
           <Typography
             id="modal-modal-title"
-            variant="h4"
-            component="h2"
+            variant="h6"
+            component="h3"
             gutterBottom
           >
             Update:
@@ -104,10 +99,13 @@ function GalleryUpdateModal({ updateModalOpen, closeUpdateModal, set }) {
             />
           </form>
           <Button
-            onClick={function(){ handleUpdate(); closeUpdateModal()}}
+            onClick={function () {
+              handleUpdate();
+              closeUpdateModal();
+            }}
             startIcon={<UpgradeIcon />}
             variant="outlined"
-            size="small"
+            size="medium"
             color="primary"
             sx={{ mt: 2 }}
           >

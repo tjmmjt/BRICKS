@@ -56,8 +56,8 @@ function GalleryCommentsModal({ commentsModalOpen, closeCommentsModal, set }) {
         <Box sx={style}>
           <Typography
             id="modal-modal-title"
-            variant="h4"
-            component="h2"
+            variant="h6"
+            component="h3"
             gutterBottom
           >
             Add Comments:
@@ -65,6 +65,7 @@ function GalleryCommentsModal({ commentsModalOpen, closeCommentsModal, set }) {
           <div>
             <TextField
               id="outlined-multiline-static"
+              onChange={(event) => setInput({...input, comments: event.target.value})}
               multiline
               rows={4}
               fullWidth
@@ -78,11 +79,11 @@ function GalleryCommentsModal({ commentsModalOpen, closeCommentsModal, set }) {
               closeCommentsModal();
             }}
             variant="outlined"
-            size="small"
+            size="medium"
             color="primary"
             sx={{ mt: 2 }}
           >
-            Update
+            COMMENT
           </Button>
         </Box>
       </Modal>
