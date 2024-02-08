@@ -25,7 +25,7 @@ const style = {
   textAlign: "center",
 };
 
-function GalleryUpdateModal({ open, close, set }) {
+function GalleryUpdateModal({ updateModalOpen, closeUpdateModal, set }) {
   const dispatch = useDispatch();
   // local state for storing inputs
   const [input, setInput] = useState({
@@ -36,19 +36,21 @@ function GalleryUpdateModal({ open, close, set }) {
     id: set.id,
   });
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     const payload = input;
-    dispatch({ type: "UPDATE_SET", payload });
-    close;
+    dispatch({ type: "UPDATE_SET", payload })
+    console.log('handleUpdate open/close', updateModalOpen)
+    closeUpdateModal
+    console.log('handleUpdate open/close', updateModalOpen)
   };
+
+  
 
   return (
     <div>
       <Modal
-        open={open}
-        onClose={close}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        open={updateModalOpen}
+        onClose={closeUpdateModal}
       >
         <Box sx={style}>
           <Typography
@@ -105,8 +107,8 @@ function GalleryUpdateModal({ open, close, set }) {
             />
           </form>
           <Button
+            onClick={function(){ handleUpdate(); closeUpdateModal()}}
             startIcon={<UpgradeIcon />}
-            onClick={handleUpdate}
             variant="outlined"
             size="small"
             color="primary"

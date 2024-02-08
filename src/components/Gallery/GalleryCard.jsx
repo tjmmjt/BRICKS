@@ -18,9 +18,9 @@ function GalleryCard({ set }) {
   const handleDeleteClose = () => setDeleteOpen(false);
 
   // Update Modal state/prompts
-  const [updateOpen, setUpdateOpen] = useState(false);
-  const promptUpdate = () => setUpdateOpen(true);
-  const handleUpdateClose = () => setUpdateOpen(false);
+  const [updateModalOpen, setUpdateModalOpen] = useState(false);
+  const promptUpdate = () => setUpdateModalOpen(true);
+  const closeUpdateModal = () => {setUpdateModalOpen(false), console.log('closeUpdateModal/update:', updateModalOpen)};
 
 
   return (
@@ -61,8 +61,8 @@ function GalleryCard({ set }) {
       </CardActions>
     </Card>
 
-    <GalleryDeleteModal open={deleteOpen} close={handleDeleteClose} id={set.id}/>
-    <GalleryUpdateModal open={updateOpen} close={handleUpdateClose} set={set}/>
+    <GalleryDeleteModal open={deleteOpen} close={handleDeleteClose} id={set.id} />
+    <GalleryUpdateModal updateModalOpen={updateModalOpen} closeUpdateModal={closeUpdateModal} set={set} />
   </>
   );
 }
