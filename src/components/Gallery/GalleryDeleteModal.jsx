@@ -17,7 +17,7 @@ const style = {
     textAlign: 'center'
 };
 
-function GalleryDeleteModal({ open, close, id }) {
+function GalleryDeleteModal({ deleteModalOpen, closeDeleteModal, id }) {
     const dispatch = useDispatch()
 
     const handleDelete = () => {
@@ -28,8 +28,8 @@ function GalleryDeleteModal({ open, close, id }) {
     return (
     <div>
       <Modal
-        open={open}
-        onClose={close}
+        open={deleteModalOpen}
+        onClose={closeDeleteModal}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -39,7 +39,10 @@ function GalleryDeleteModal({ open, close, id }) {
           </Typography>
           <Button 
             startIcon={<DeleteIcon />}
-            onClick={handleDelete} 
+            onClick={function () {
+              handleDelete();
+              closeDeleteModal();
+            }}
             variant='outlined' 
             color='error' 
             sx={{mt: 2}}>Delete</Button>

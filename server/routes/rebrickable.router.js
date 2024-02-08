@@ -12,7 +12,7 @@ router.get("/:id", (req, res) => {
   // lego set to gallery_items DB which is rendered on the users Gallery page
   const apiKey = process.env.REBRICKABLE_KEY;
   const params = [req.params.id];
-  console.log("REQ.PARAMS", params);
+  // console.log("REQ.PARAMS", params);
 
   axios
     .get(`https://rebrickable.com/api/v3/lego/sets/${params}-1?key=${apiKey}`)
@@ -24,13 +24,6 @@ router.get("/:id", (req, res) => {
       console.error("Error getting Rebrickable Request:", err);
       res.sendStatus(500);
     });
-});
-
-/**
- * POST route template
- */
-router.post("/", (req, res) => {
-  // POST route code here
 });
 
 module.exports = router;

@@ -25,7 +25,9 @@ app.use(passport.session());
 
 // Routes
 app.use('/api/user', userRouter);
+// API route
 app.use('/api/search', rebrickableRouter)
+// DB route
 app.use('/api/gallery', galleryRouter)
 
 // Listen Server & Port
