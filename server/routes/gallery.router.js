@@ -77,5 +77,34 @@ router.delete('/:id', (req, res) => {
   })
 })
 
+router.patch('/', (req, res) => {
+    const queryText = `
+    UPDATE "gallery_item"
+      SET (name, num_parts, year, theme_id) = ($1, $2, $3, $4)
+      WHERE id=$5;
+      `;
+  
+    const lego = req.body;
+
+    const queryParams = [
+      lego.name,
+      lego.num_parts,
+      lego.year,
+      lego.theme_id,
+      lego.id
+    ];
+    console.log('req.body', req.body)
+    console.log('queryParams:', queryParams)
+    pool
+      .query(queryText, queryParams)
+      .then((result) => {
+        res.sendStatus(201);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.sendStatus(500);
+      });
+  });
+
 
 module.exports = router;

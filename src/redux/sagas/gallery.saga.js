@@ -12,15 +12,26 @@ function* fetchGallery(action) {
 }
 
 function* deleteSet(action) {
-  console.log('in deleteSet(*)')
-  console.log('delete id:', action.payload)
+  // console.log('in deleteSet(*)')
+  // console.log('delete id:', action.payload)
   yield axios.delete(`/api/gallery/${action.payload}`)
   yield put({type: 'FETCH_GALLERY'})
 }
 
+function* updateSet(action){
+  console.log('in updateSet(*)')
+  // need to send axios.patch request by req.params.id with req.body
+  console.log('payload:', action.payload)
+  console.log('id:', action.payload.id)
+  // PATCH
+  yield axios.patch(`/api/gallery/`, action.payload)
+  yield put({type: 'FETCH_GALLERY'})
+}
+
 function* gallerySaga(action) {
-  yield takeLatest("FETCH_GALLERY", fetchGallery);
+  yield takeLatest('FETCH_GALLERY', fetchGallery);
   yield takeLatest('DELETE_SET', deleteSet)
+  yield takeLatest('UPDATE_SET', updateSet)
 }
 
 export default gallerySaga;
