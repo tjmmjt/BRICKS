@@ -39,9 +39,6 @@ function GalleryUpdateModal({ updateModalOpen, closeUpdateModal, set }) {
   const handleUpdate = async () => {
     const payload = input;
     dispatch({ type: "UPDATE_SET", payload })
-    console.log('handleUpdate open/close', updateModalOpen)
-    closeUpdateModal
-    console.log('handleUpdate open/close', updateModalOpen)
   };
 
   

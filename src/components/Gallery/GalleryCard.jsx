@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import GalleryDeleteModal from "./GalleryDeleteModal";
 import GalleryUpdateModal from "./GalleryUpdateModal";
+import GalleryCommentsModal from "./GalleryCommentsModal";
 
 function GalleryCard({ set }) {
   const dispatch = useDispatch()
@@ -20,7 +21,12 @@ function GalleryCard({ set }) {
   // Update Modal state/prompts
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
   const promptUpdate = () => setUpdateModalOpen(true);
-  const closeUpdateModal = () => {setUpdateModalOpen(false), console.log('closeUpdateModal/update:', updateModalOpen)};
+  const closeUpdateModal = () => setUpdateModalOpen(false);
+
+  // Comments Modal state/prompts
+  const [commentsModalOpen, setCommentsModalOpen] = useState(false);
+  const promptComments = () => setCommentsModalOpen(true);
+  const closeCommentsModal = () => setCommentsModalOpen(false);
 
 
   return (
@@ -49,7 +55,7 @@ function GalleryCard({ set }) {
         <IconButton aria-label="add to favorites">
           <FavoriteIcon fontSize="large" />
         </IconButton>
-        <IconButton aria-label="add comments">
+        <IconButton onClick={promptComments} aria-label="add comments">
           <AddCommentIcon fontSize="large" />
         </IconButton>
         <IconButton onClick={promptUpdate} aria-label="edit">
@@ -63,6 +69,7 @@ function GalleryCard({ set }) {
 
     <GalleryDeleteModal open={deleteOpen} close={handleDeleteClose} id={set.id} />
     <GalleryUpdateModal updateModalOpen={updateModalOpen} closeUpdateModal={closeUpdateModal} set={set} />
+    <GalleryCommentsModal commentsModalOpen={commentsModalOpen} closeCommentsModal={closeCommentsModal} set={set} />
   </>
   );
 }
