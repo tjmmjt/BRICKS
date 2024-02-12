@@ -47,7 +47,7 @@ function ModalAddSet(props) {
             {searchReducer.name}
           </Typography>
           <img src={searchReducer.set_img_url} alt={searchReducer.name} />
-          <Button onClick={handleAdd} variant='contained' color='success' sx={{mt: 2}}>Add</Button>
+          <Button onClick={handleAdd} variant='contained' color='primary' sx={{mt: 2}}>Add</Button>
         </Box>
       </Modal>
     </div>

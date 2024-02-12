@@ -5,8 +5,9 @@
   align-items: center;
 
   margin: 0 0 30px;
-  background-color: #00acb0;
+  background-color: #ffffff4d;
   overflow: hidden;
+  height: 6rem;
 }
 
 .nav a {
@@ -24,12 +25,11 @@
 .navLink {
   display: inline-block;
   color: #f2f2f2;
-  background-color: #00acb0;
   text-align: center;
-  padding: 24px 10px;
+  padding: 100% 10px;
   text-decoration: none;
   font-size: 15px;
-
+  background-color: transparent;
   /* these last two make the logout button in
   the nav bar look like another link */
   border: none;
@@ -37,6 +37,7 @@
   outline: 0;
 }
 
+
 .navLink:hover {
-  background-color: #008183;
+  background-color: #0065d2a1;
 }

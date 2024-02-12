@@ -34,7 +34,7 @@ function GalleryDeleteModal({ deleteModalOpen, closeDeleteModal, id }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h4" component="h2">
+          <Typography id="modal-modal-title" variant="h6" component="h3">
             Confirm Delete
           </Typography>
           <Button 

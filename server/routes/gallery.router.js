@@ -48,7 +48,8 @@ router.post("/", (req, res) => {
 // TODO get only the LEGO sets for the specific user
 router.get("/", (req, res) => {
   const queryText = `
-    SELECT * FROM "gallery_item";
+    SELECT * FROM "gallery_item"
+    ORDER BY id;
   `;
   pool
     .query(queryText)
@@ -134,5 +135,23 @@ router.patch("/comments", (req, res) => {
       res.sendStatus(500);
     });
 });
+
+router.patch('/favorite/:id', (req, res) => {
+  const queryText = `
+    UPDATE "gallery_item"
+      SET favorite = NOT favorite
+    WHERE id=$1;
+  `
+  const queryParams = [req.params.id]
+  pool.query(queryText, queryParams)
+  .then(result => {
+    res.sendStatus(201)
+  })
+  .catch(err => {
+    console.error(err)
+    res.sendStatus(500)
+  })
+})
+
 
 module.exports = router;

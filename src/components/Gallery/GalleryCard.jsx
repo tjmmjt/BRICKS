@@ -1,6 +1,5 @@
 import { Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography } from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddCommentIcon from '@mui/icons-material/AddComment';
 import EditIcon from '@mui/icons-material/Edit';
@@ -28,7 +27,6 @@ function GalleryCard({ set }) {
   const promptComments = () => setCommentsModalOpen(true);
   const closeCommentsModal = () => setCommentsModalOpen(false);
 
-
   return (
   <>
 
@@ -52,8 +50,8 @@ function GalleryCard({ set }) {
         </Typography>
       </CardContent>
       <CardActions sx={{display: 'flex', justifyContent: 'center'}}>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon fontSize="large" />
+        <IconButton onClick={() => dispatch({type: 'FAVORITE', payload: set.id})} aria-label="add to favorites">
+          {set.favorite ? <FavoriteIcon fontSize="large" sx={{color: 'red'}}/> : <FavoriteIcon fontSize="large"/> }
         </IconButton>
         <IconButton onClick={promptComments} aria-label="add comments">
           <AddCommentIcon fontSize="large" />
@@ -67,7 +65,7 @@ function GalleryCard({ set }) {
       </CardActions>
     </Card>
 
-    <GalleryDeleteModal deleteModalOpen={deleteModalOpen} close={closeDeleteModal} id={set.id} />
+    <GalleryDeleteModal deleteModalOpen={deleteModalOpen} closeDeleteModal={closeDeleteModal} id={set.id} />
     <GalleryUpdateModal updateModalOpen={updateModalOpen} closeUpdateModal={closeUpdateModal} set={set} />
     <GalleryCommentsModal commentsModalOpen={commentsModalOpen} closeCommentsModal={closeCommentsModal} set={set} />
   </>
