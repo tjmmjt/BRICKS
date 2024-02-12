@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
-import UpgradeIcon from "@mui/icons-material/Upgrade";
+import EditIcon from '@mui/icons-material/Edit';
 import { useState } from "react";
 
 const style = {
@@ -103,7 +103,7 @@ function GalleryUpdateModal({ updateModalOpen, closeUpdateModal, set }) {
               handleUpdate();
               closeUpdateModal();
             }}
-            startIcon={<UpgradeIcon />}
+            startIcon={<EditIcon />}
             variant="outlined"
             size="medium"
             color="primary"

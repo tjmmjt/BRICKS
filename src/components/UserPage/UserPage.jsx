@@ -9,6 +9,7 @@ function UserPage(props) {
   return (
     <div className="container">
       <Dashboard user={user} />
+      <p>Display Build Stats: total sets built, total pieces, categories</p>
       <LogOutButton className="btn" />
     </div>
   );

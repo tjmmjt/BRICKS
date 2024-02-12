@@ -50,7 +50,7 @@ function AddSet() {
             5 digits.
           </Typography>
         </CardContent>
-        <CardActions sx={{px: 2.5}}>
+        <CardActions sx={{p: 3}}>
           <form onSubmit={handleSearch}>
               <Input
                 variant="outlined"

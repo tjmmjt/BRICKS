@@ -1,13 +1,12 @@
 import {
   Box,
   Button,
-  Input,
   Modal,
   TextField,
   Typography,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
-import UpgradeIcon from "@mui/icons-material/Upgrade";
+import AddCommentIcon from '@mui/icons-material/AddComment';
 import { useState } from "react";
 
 const style = {
@@ -73,7 +72,7 @@ function GalleryCommentsModal({ commentsModalOpen, closeCommentsModal, set }) {
             />
           </div>
           <Button
-            startIcon={<UpgradeIcon />}
+            startIcon={<AddCommentIcon />}
             onClick={function () {
               handleUpdate();
               closeCommentsModal();

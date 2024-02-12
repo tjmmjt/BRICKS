@@ -4,6 +4,7 @@ import './LandingPage.css';
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
+import { Container } from '@mui/material';
 
 function LandingPage() {
   const [heading, setHeading] = useState('Welcome');
