@@ -1,27 +1,32 @@
 import { put, takeLatest } from 'redux-saga/effects'
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
-
+// ! rebrickable API GET
+// sends axios get request to rebrickable api for a specific lego set number
+// initialize a variable (lego) with the response data, then
+// store the response (search result) in search.reducer 
 function* searchLego(action) {
     try {
-        // action.payload should be the id
         // console.log("action.payload:", action.payload);
         // initialize lego with API request data
         const lego = yield axios.get(`/api/search/${action.payload}`)
-        // console.log('lego:', lego)
-        // send lego.data to SEARCH_RESULT
         yield put({type: 'SEARCH_RESULT', payload: lego.data})
     } catch (error) {
         console.error('error adding lego')
     }
 }
 
+// ! DB POST 
+// post search result and user.id to gallery_item
 function* addSet(action){
-    // combine user and search result into an array which can be accessed in router by key
     // const payload = useSelector(store => ({searchReducer: store.searchReducer, user: store.user}))
-    yield console.log("Payload:", action.payload)
-    yield axios.post('/api/gallery', action.payload)
+    try {
+        yield console.log("Payload:", action.payload)
+        yield axios.post('/api/gallery', action.payload)
+    } catch (error) {
+        console.error('Error in addSet(*)')
+    }
 }
 
 

@@ -25,14 +25,17 @@ function ModalAddSet(props) {
   const searchReducer = useSelector(store => store.searchReducer)
   const user = useSelector(store => store.user)
   const history = useHistory()
-
-  const handleAdd = (event) => {
+  
+  
+  const handleAdd = async (event) => {
     event.preventDefault()
     // must send a payload, tried using useSelector hook in saga gen func and it errored for breaking rules of hooks
     const payload = {searchReducer: searchReducer, user: user}
     dispatch({type: 'ADD_SET', payload})
-    history.push('/gallery')
+    setTimeout(() => dispatch({type: 'FETCH_GALLERY'}), 250)
+    setTimeout(() => history.push('/gallery'), 500)
   }
+
 
   return (
     <div>

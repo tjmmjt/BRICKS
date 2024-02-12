@@ -49,7 +49,7 @@ router.post("/", (req, res) => {
 router.get("/", (req, res) => {
   const queryText = `
     SELECT * FROM "gallery_item"
-    ORDER BY id;
+    ORDER BY id DESC;
   `;
   pool
     .query(queryText)
