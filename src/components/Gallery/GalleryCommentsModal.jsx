@@ -24,12 +24,7 @@ const style = {
   textAlign: "center",
 };
 
-// ! New Component copied from UpdateModal -
-// 1. add textfield with expanded text box
-// 2. create local state for open/close modal w/ functions
-// 3. pass modal state, fns down as props
-// 4. create saga gen func for patching comments
-// 5. create patch router fn
+
 
 function GalleryCommentsModal({ commentsModalOpen, closeCommentsModal, set }) {
   const dispatch = useDispatch();
