@@ -4,6 +4,7 @@ import ModalAddSet from "./ModalAddSet";
 import { Button, Card, CardActions, CardContent, CardHeader, Container, Input, TextField, Typography } from "@mui/material";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Header from "../Header/Header";
 
 // this page will have a form with an input and button
 // user will input their lego set number and click search button
@@ -39,6 +40,8 @@ function AddSet() {
 
   return (
     <>
+    <Header />
+    
     <Container>
       <Card sx={{ maxWidth: 345, m: 'auto',mt: 8, p: 2}}>
         <CardHeader title="Add Set" />
