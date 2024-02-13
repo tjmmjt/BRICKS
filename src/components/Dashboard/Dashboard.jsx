@@ -1,8 +1,9 @@
-import { Box, Button, Card, Typography } from "@mui/material";
+import { Box, Button, Card, Container, Typography } from "@mui/material";
 import styles from "./DashboardStyle";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import Header from "../Header/Header";
 
 function Dashboard() {
   useEffect(() => {
@@ -18,8 +19,10 @@ function Dashboard() {
 
 
   return (
-    <>
-      <Box textAlign="center" mt={8} maxWidth={'40%'}>
+  <>
+    <Header />
+
+      <Box mx={'auto'} textAlign="center" mt={8} maxWidth={'35%'}>
         <Typography
           component="h2"
           variant="h4"
@@ -27,7 +30,14 @@ function Dashboard() {
           color="white"
           sx={{ textShadow: "2px 2px 5px black" }}
         >
-          Welcome, <br /> {user.username.toUpperCase()}#{user.id}!
+          Welcome, {user.username}!
+        </Typography>
+        <Typography
+          component="subtitle"
+          color="white"
+          sx={{ textShadow: "2px 2px 5px black" }}
+        >
+          User ID: {user.id}
         </Typography>
 
         <Card
@@ -68,15 +78,16 @@ function Dashboard() {
           </Box>
         </Card>
 
-        <Box mt={2}>
+        {/* <Box mt={2}>
           <Button onClick={() => history.push('/gallery')} variant="contained" sx={styles.greenButtonStyle}>
             GALLERY
           </Button>
           <Button onClick={() => history.push('/add_set')} variant="contained" sx={styles.orangeButtonStyle}>
             ADD SET
           </Button>
-        </Box>
+        </Box> */}
       </Box>
+
     </>
   );
 }

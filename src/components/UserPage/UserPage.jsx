@@ -8,9 +8,7 @@ function UserPage(props) {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   return (
-    <Container sx={{display: 'flex', alignContent: 'center', justifyContent: 'center'}}>
       <Dashboard user={user} />
-    </Container>
   );
 }
 

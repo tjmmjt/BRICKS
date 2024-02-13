@@ -2,6 +2,7 @@ import { Box, Container, Grid, Paper } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GalleryCard from "./GalleryCard";
+import Header from "../Header/Header";
 
 function Gallery() {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ function Gallery() {
 
   return (
     <>
+    <Header />
       <Container>
         <Grid container mt={5} px={4} spacing={5} sx={{alignItems: 'center'}}>
           {store.map((set, i) => (
