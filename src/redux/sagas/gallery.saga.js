@@ -1,6 +1,19 @@
 import axios from "axios";
 import { takeLatest, put } from "redux-saga/effects";
 
+// ! GET stats
+function* fetchStats(action){
+  console.log('in fetchStats(*)')
+  try {
+    const stats = yield axios.get(`/api/gallery/stats/${action.payload}`)
+    console.log('stats.data:', stats.data)
+    yield put({type: 'SET_STATS', payload: stats.data[0]})
+  } catch (error) {
+    console.error('error fetching stats')
+  }
+}
+
+
 // ! GET
 // fetches data from gallery_item table,
 // stores it in gallery.reducer
@@ -29,7 +42,7 @@ function* deleteSet(action) {
   
 }
 
-// ! UPDATE
+// ! UPDATE lego set data
 // updates name, num_parts, year, and theme_id then
 // returns updated store
 function* updateSet(action){
@@ -76,6 +89,7 @@ function* gallerySaga(action) {
   yield takeLatest('UPDATE_SET', updateSet)
   yield takeLatest('UPDATE_COMMENTS', updateComments)
   yield takeLatest('FAVORITE', favorite)
+  yield takeLatest('FETCH_STATS', fetchStats)
 }
 
 
