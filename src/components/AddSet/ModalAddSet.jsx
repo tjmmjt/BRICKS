@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { Container } from '@mui/material';
 
 const style = {
   position: 'absolute',
@@ -38,7 +39,6 @@ function ModalAddSet(props) {
 
 
   return (
-    <div>
       <Modal
         open={props.open}
         onClose={props.close}
@@ -49,11 +49,10 @@ function ModalAddSet(props) {
           <Typography id="modal-modal-title" variant="h4" component="h2">
             {searchReducer.name}
           </Typography>
-          <img src={searchReducer.set_img_url} alt={searchReducer.name} />
+          <Container><img src={searchReducer.set_img_url} alt={searchReducer.name} /></Container>
           <Button onClick={handleAdd} variant='contained' color='primary' sx={{mt: 2}}>Add</Button>
         </Box>
       </Modal>
-    </div>
   );
 }
 

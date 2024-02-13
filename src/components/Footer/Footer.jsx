@@ -1,4 +1,5 @@
 import React from 'react';
+import Nav from '../Nav/Nav';
 import './Footer.css';
 
 // This is one of our simplest components
@@ -7,7 +8,12 @@ import './Footer.css';
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 function Footer() {
-  return <footer>&copy; Prime Digital Academy</footer>;
+  return (
+      <footer>
+      <Nav />
+        &copy; Prime Digital Academy
+      </footer>
+  )
 }
 
 export default Footer;
