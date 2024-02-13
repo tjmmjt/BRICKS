@@ -40,8 +40,7 @@ function AddSet() {
   return (
     <>
     <Container>
-      
-      <Card sx={{ maxWidth: 345, m: 'auto', p: 2}}>
+      <Card sx={{ maxWidth: 345, m: 'auto',mt: 8, p: 2}}>
         <CardHeader title="Add Set" />
         <CardContent sx={{pt: 0.5}}>
           <Typography variant="body2">
@@ -63,24 +62,10 @@ function AddSet() {
             </form>
         </CardActions>
       </Card>
-
     </Container>
 
+    <ModalAddSet open={open} close={() => setOpen(false)} />
 
-      {/* <Container>
-        <Grid container>
-        <form onSubmit={handleSearch}>
-          <input
-            type="text"
-            value={id}
-            onChange={(event) => setId(event.target.value)}
-          />
-          <button type="submit">Search</button>
-        </form>
-        </Grid>
-      </Container> */}
-
-      <ModalAddSet open={open} close={() => setOpen(false)} />
     </>
   );
 }

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../modules/pool");
 
-// Add a new LEGO set to gallery_items with user.id
+// ! POST a new LEGO set to gallery_items with user.id
 router.post("/", (req, res) => {
   const queryText = `
     INSERT INTO "gallery_item" (
@@ -44,7 +44,7 @@ router.post("/", (req, res) => {
     });
 });
 
-// get all LEGO sets back
+// ! GET all LEGO sets
 // TODO get only the LEGO sets for the specific user
 router.get("/", (req, res) => {
   const queryText = `
@@ -62,7 +62,25 @@ router.get("/", (req, res) => {
     });
 });
 
-// Delete a LEGO set by ID.
+router.get("/stats/:id", (req, res) => {
+  const queryText = `
+    SELECT COUNT(*) as total_sets, SUM(CAST(num_parts AS INTEGER)) as total_num_parts, string_agg(CAST(theme_id AS text), ', ') as all_theme_id
+    FROM "gallery_item"
+    WHERE user_id=$1;
+  `;
+  const queryParams = [req.params.id];
+  pool
+    .query(queryText, queryParams)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((err) => {
+      console.error("Error getting stats:", err);
+      res.sendStatus(500);
+    });
+});
+
+// ! DELETE a LEGO set by ID.
 // TODO add condition for user.id --
 // WHERE id=$1 && user.id=$2
 router.delete("/:id", (req, res) => {
@@ -136,22 +154,22 @@ router.patch("/comments", (req, res) => {
     });
 });
 
-router.patch('/favorite/:id', (req, res) => {
+router.patch("/favorite/:id", (req, res) => {
   const queryText = `
     UPDATE "gallery_item"
       SET favorite = NOT favorite
     WHERE id=$1;
-  `
-  const queryParams = [req.params.id]
-  pool.query(queryText, queryParams)
-  .then(result => {
-    res.sendStatus(201)
-  })
-  .catch(err => {
-    console.error(err)
-    res.sendStatus(500)
-  })
-})
-
+  `;
+  const queryParams = [req.params.id];
+  pool
+    .query(queryText, queryParams)
+    .then((result) => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;
