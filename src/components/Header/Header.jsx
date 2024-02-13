@@ -20,7 +20,7 @@ function Header() {
         <Box mx={15}>
             <Link to="/user">
                 <img
-                    src="../../public/BRICKS_no_background.png"
+                    src="../../public/BRICKS_trimmed_no_background.png"
                     alt="Logo / Home"
                     height={130}
                 />
