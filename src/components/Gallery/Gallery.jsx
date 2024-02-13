@@ -15,7 +15,7 @@ function Gallery() {
   return (
     <>
       <Container>
-        <Grid container px={4} spacing={5} sx={{alignItems: 'center'}}>
+        <Grid container mt={5} px={4} spacing={5} sx={{alignItems: 'center'}}>
           {store.map((set, i) => (
             <Grid item key={i} xs={12} sm={6} md={4} lg={4}>
               <GalleryCard raised set={set} />
