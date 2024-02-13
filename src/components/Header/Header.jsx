@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import headerStyles from "./headerStyles";
+import HamburgerMenu from "./HamburgerMenu";
+
 
 function Header() {
     const user = useSelector(store => store.user)
@@ -10,6 +12,7 @@ function Header() {
 
   return (
       <Container maxWidth={false} sx={headerStyles.header}>
+        <HamburgerMenu />
         <Box width={125}>
           {user.id && (
             <Button variant="contained" sx={headerStyles.greenButtonStyle} onClick={() => history.push('/gallery')}>Gallery</Button>
