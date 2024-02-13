@@ -62,9 +62,11 @@ router.get("/", (req, res) => {
     });
 });
 
+
+// ! 
 router.get("/stats/:id", (req, res) => {
   const queryText = `
-    SELECT COUNT(*) as total_sets, SUM(CAST(num_parts AS INTEGER)) as total_num_parts, string_agg(CAST(theme_id AS text), ', ') as all_theme_id
+    SELECT COUNT(*) as total_sets, SUM(CAST(num_parts AS INTEGER)) as total_num_parts, string_agg(DISTINCT(CAST(theme_id AS text)), ', ') as all_theme_id
     FROM "gallery_item"
     WHERE user_id=$1;
   `;

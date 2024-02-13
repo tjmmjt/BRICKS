@@ -19,7 +19,7 @@ function Dashboard() {
 
   return (
     <>
-      <Box textAlign="center" mt={8}>
+      <Box textAlign="center" mt={8} maxWidth={'40%'}>
         <Typography
           component="h2"
           variant="h4"
