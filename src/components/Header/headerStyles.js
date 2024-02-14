@@ -1,10 +1,8 @@
 
 const headerStyles = {
     header: {
-      backgroundColor: "rgba(255, 255, 255, 0.2)",
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center',
+      // backgroundColor: "rgba(255, 255, 255, 0.2)",
+      alignItems: 'center'
     },
 
     greenButtonStyle: {

@@ -22,24 +22,7 @@ function Dashboard() {
   <>
     <Header />
 
-      <Box mx={'auto'} textAlign="center" mt={8} maxWidth={'35%'}>
-        <Typography
-          component="h2"
-          variant="h4"
-          fontWeight="bold"
-          color="white"
-          sx={{ textShadow: "2px 2px 5px black" }}
-        >
-          Welcome, {user.username}!
-        </Typography>
-        <Typography
-          component="subtitle"
-          color="white"
-          sx={{ textShadow: "2px 2px 5px black" }}
-        >
-          User ID: {user.id}
-        </Typography>
-
+      <Box mx={'auto'} textAlign="center"  maxWidth={'35%'}>
         <Card
           sx={{
             mt: 2,
@@ -78,14 +61,14 @@ function Dashboard() {
           </Box>
         </Card>
 
-        {/* <Box mt={2}>
+        <Box mt={2}>
           <Button onClick={() => history.push('/gallery')} variant="contained" sx={styles.greenButtonStyle}>
             GALLERY
           </Button>
           <Button onClick={() => history.push('/add_set')} variant="contained" sx={styles.orangeButtonStyle}>
             ADD SET
           </Button>
-        </Box> */}
+        </Box>
       </Box>
 
     </>
