@@ -3,6 +3,8 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useDispatch } from 'react-redux';
 
 export default function HamburgerMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -14,6 +16,9 @@ export default function HamburgerMenu() {
     setAnchorEl(null);
   };
 
+  const history = useHistory()
+  const dispatch = useDispatch()
+
   return (
     <div>
       <Button
@@ -22,8 +27,11 @@ export default function HamburgerMenu() {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        color='primary'
+        variant='outlined'
+        sx={{color: 'white'}}
       >
-        <MenuIcon />
+        <MenuIcon sx={{fontSize: 50}}/>
       </Button>
       <Menu
         id="basic-menu"
@@ -34,9 +42,10 @@ export default function HamburgerMenu() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={() => history.push('/user')}>Dashboard</MenuItem>
+        <MenuItem onClick={() => history.push('/add_set')}>Add Set</MenuItem>
+        <MenuItem onClick={() => history.push('/gallery')}>Gallery</MenuItem>
+        <MenuItem onClick={() => dispatch({ type: 'LOGOUT' })}>Logout</MenuItem>
       </Menu>
     </div>
   );
