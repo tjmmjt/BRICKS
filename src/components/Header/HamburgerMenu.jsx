@@ -27,10 +27,11 @@ export default function HamburgerMenu() {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        color='primary'
         variant='outlined'
         sx={{color: 'white'}}
       >
-        <MenuIcon sx={{fontSize: 40}}/>
+        <MenuIcon sx={{fontSize: 50}}/>
       </Button>
       <Menu
         id="basic-menu"
