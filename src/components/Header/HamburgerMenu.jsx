@@ -31,7 +31,7 @@ export default function HamburgerMenu() {
         variant='outlined'
         sx={{color: 'white'}}
       >
-        <MenuIcon sx={{fontSize: 50}}/>
+        <MenuIcon sx={{fontSize: 40}}/>
       </Button>
       <Menu
         id="basic-menu"
