@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import {useSelector} from 'react-redux';
+import { Label } from "@mui/icons-material";
+import { Button, TextField, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function LoginForm() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const errors = useSelector(store => store.errors);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
   const login = (event) => {
@@ -13,51 +15,66 @@ function LoginForm() {
 
     if (username && password) {
       dispatch({
-        type: 'LOGIN',
+        type: "LOGIN",
         payload: {
           username: username,
           password: password,
         },
       });
     } else {
-      dispatch({ type: 'LOGIN_INPUT_ERROR' });
+      dispatch({ type: "LOGIN_INPUT_ERROR" });
     }
   }; // end login
 
   return (
-    <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
+    <form onSubmit={login}>
+      <Typography variant="h5" component="h1" color="white">
+        Login
+      </Typography>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
         </h3>
       )}
       <div>
-        <label htmlFor="username">
-          Username:
-          <input
-            type="text"
-            name="username"
-            required
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-        </label>
+        <TextField
+          type="text"
+          name="username"
+          label="username"
+          size="small"
+          required
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+          sx={{ backgroundColor: "white", borderRadius: 3, my: 1 }}
+        />
       </div>
       <div>
-        <label htmlFor="password">
-          Password:
-          <input
-            type="password"
-            name="password"
-            required
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-        </label>
+        <TextField
+          type="password"
+          name="password"
+          label="password"
+          size="small"
+          required
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          sx={{ backgroundColor: "white", borderRadius: 3, my: 1, mb: 2 }}
+        />
       </div>
       <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
+        <Button
+          type="button"
+          color="info"
+          onClick={() => {
+            history.push("/registration");
+          }}
+          sx={{mr: 4}}
+        >
+          Register
+        </Button>
+
+        <Button type="submit" variant="contained">
+          Login
+        </Button>
       </div>
     </form>
   );
