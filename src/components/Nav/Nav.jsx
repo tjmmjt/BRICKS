@@ -8,6 +8,7 @@ function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
+
     <div className="nav">
       <div>
         {/* If no user is logged in, show these links */}
