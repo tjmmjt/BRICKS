@@ -69,13 +69,13 @@ router.get("/", (req, res) => {
 
 
 // ! 
-router.get("/stats/:id", (req, res) => {
+router.get("/stats/", (req, res) => {
   const queryText = `
     SELECT COUNT(*) as total_sets, SUM(CAST(num_parts AS INTEGER)) as total_num_parts, string_agg(DISTINCT(CAST(theme_id AS text)), ', ') as all_theme_id
     FROM "gallery_item"
     WHERE user_id=$1;
   `;
-  const queryParams = [req.params.id];
+  const queryParams = [req.user.id];
   pool
     .query(queryText, queryParams)
     .then((result) => {
@@ -118,13 +118,14 @@ router.patch("/", (req, res) => {
       `;
 
   const lego = req.body;
+console.log("UPDATE REQ.BODY", req.body)
 
   const queryParams = [
-    lego.name,
-    lego.num_parts,
-    lego.year,
-    lego.theme_id,
-    lego.id,
+    lego.input.name,
+    lego.input.num_parts,
+    lego.input.year,
+    lego.input.theme_id,
+    lego.setid,
   ];
   // console.log('req.body', req.body)
   // console.log('queryParams:', queryParams)
