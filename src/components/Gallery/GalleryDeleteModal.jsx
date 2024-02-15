@@ -23,7 +23,7 @@ function GalleryDeleteModal({ deleteModalOpen, closeDeleteModal, setid, userid }
     const handleDelete = () => {
         const payload = {setid: setid, userid: userid}
         dispatch({type: 'DELETE_SET', payload})
-        location.reload()
+        // location.reload()
       }
 
     return (

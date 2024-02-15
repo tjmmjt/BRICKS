@@ -24,6 +24,7 @@ function* addSet(action){
     try {
         yield console.log("Payload:", action.payload)
         yield axios.post('/api/gallery', action.payload)
+        yield put({type: 'FETCH_GALLERY', payload: action.payload.userid})
     } catch (error) {
         console.error('Error in addSet(*)')
     }
