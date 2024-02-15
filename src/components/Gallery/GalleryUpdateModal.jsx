@@ -25,7 +25,7 @@ const style = {
   textAlign: "center",
 };
 
-function GalleryUpdateModal({ updateModalOpen, closeUpdateModal, set }) {
+function GalleryUpdateModal({ updateModalOpen, closeUpdateModal, set, userid }) {
   const dispatch = useDispatch();
   // local state for storing inputs
   const [input, setInput] = useState({
@@ -37,7 +37,7 @@ function GalleryUpdateModal({ updateModalOpen, closeUpdateModal, set }) {
   });
 
   const handleUpdate = async () => {
-    const payload = input;
+    const payload = {input: input, userid: userid};
     dispatch({ type: "UPDATE_SET", payload });
   };
 

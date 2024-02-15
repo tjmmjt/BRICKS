@@ -17,13 +17,13 @@ const style = {
     textAlign: 'center'
 };
 
-function GalleryDeleteModal({ deleteModalOpen, closeDeleteModal, id }) {
+function GalleryDeleteModal({ deleteModalOpen, closeDeleteModal, setid, userid }) {
     const dispatch = useDispatch()
 
     const handleDelete = () => {
-        const payload = id
+        const payload = {setid: setid, userid: userid}
         dispatch({type: 'DELETE_SET', payload})
-        location.reload()
+        // location.reload()
       }
 
     return (

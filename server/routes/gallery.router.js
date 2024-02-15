@@ -47,12 +47,17 @@ router.post("/", (req, res) => {
 // ! GET all LEGO sets
 // TODO get only the LEGO sets for the specific user
 router.get("/", (req, res) => {
+  console.log('REQ.USER:', req.user)
   const queryText = `
     SELECT * FROM "gallery_item"
-    ORDER BY id DESC;
+    WHERE user_id=($1)
+    ORDER BY id DESC
+    ;
   `;
+  const queryParams = [req.user.id]
+  // console.log('QUERYPARAMS', queryParams)
   pool
-    .query(queryText)
+    .query(queryText, queryParams)
     .then((result) => {
       res.send(result.rows);
     })
@@ -143,7 +148,8 @@ router.patch("/comments", (req, res) => {
       SET comments = $2
       WHERE id=$1
     `;
-  const queryParams = [req.body.id, req.body.comments];
+    console.log('REQ.BODY', req.body);
+  const queryParams = [req.body.setid, req.body.comments];
 
   pool
     .query(queryText, queryParams)

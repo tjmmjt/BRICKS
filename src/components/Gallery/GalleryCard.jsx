@@ -3,15 +3,14 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddCommentIcon from '@mui/icons-material/AddComment';
 import EditIcon from '@mui/icons-material/Edit';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import GalleryDeleteModal from "./GalleryDeleteModal";
 import GalleryUpdateModal from "./GalleryUpdateModal";
 import GalleryCommentsModal from "./GalleryCommentsModal";
 
-function GalleryCard({ set }) {
+function GalleryCard({ set, userid }) {
   const dispatch = useDispatch()
-
   // Delete Modal state/prompts
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const promptDelete = () => setDeleteModalOpen(true);
@@ -26,6 +25,8 @@ function GalleryCard({ set }) {
   const [commentsModalOpen, setCommentsModalOpen] = useState(false);
   const promptComments = () => setCommentsModalOpen(true);
   const closeCommentsModal = () => setCommentsModalOpen(false);
+
+
 
   return (
   <>
@@ -50,7 +51,7 @@ function GalleryCard({ set }) {
         </Typography>
       </CardContent>
       <CardActions sx={{display: 'flex', justifyContent: 'center'}}>
-        <IconButton onClick={() => dispatch({type: 'FAVORITE', payload: set.id})} aria-label="add to favorites">
+        <IconButton onClick={() => dispatch({type: 'FAVORITE', payload: {userid: userid, setid: set.id}})} aria-label="add to favorites">
           {set.favorite ? <FavoriteIcon fontSize="large" sx={{color: 'red'}}/> : <FavoriteIcon fontSize="large"/> }
         </IconButton>
         <IconButton onClick={promptComments} aria-label="add comments">
@@ -65,9 +66,9 @@ function GalleryCard({ set }) {
       </CardActions>
     </Card>
 
-    <GalleryDeleteModal deleteModalOpen={deleteModalOpen} closeDeleteModal={closeDeleteModal} id={set.id} />
-    <GalleryUpdateModal updateModalOpen={updateModalOpen} closeUpdateModal={closeUpdateModal} set={set} />
-    <GalleryCommentsModal commentsModalOpen={commentsModalOpen} closeCommentsModal={closeCommentsModal} set={set} />
+    <GalleryDeleteModal deleteModalOpen={deleteModalOpen} closeDeleteModal={closeDeleteModal} setid={set.id} userid={userid}/>
+    <GalleryUpdateModal updateModalOpen={updateModalOpen} closeUpdateModal={closeUpdateModal} set={set} userid={userid} />
+    <GalleryCommentsModal commentsModalOpen={commentsModalOpen} closeCommentsModal={closeCommentsModal} set={set} userid={userid} />
   </>
   );
 }

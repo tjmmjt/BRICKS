@@ -33,8 +33,8 @@ function ModalAddSet(props) {
     // must send a payload, tried using useSelector hook in saga gen func and it errored for breaking rules of hooks
     const payload = {searchReducer: searchReducer, user: user}
     dispatch({type: 'ADD_SET', payload})
-    setTimeout(() => dispatch({type: 'FETCH_GALLERY'}), 250)
-    setTimeout(() => history.push('/gallery'), 500)
+    // setTimeout(() => dispatch({type: 'FETCH_GALLERY'}), 500)
+    setTimeout(() => history.push('/gallery'), 0)
   }
 
 

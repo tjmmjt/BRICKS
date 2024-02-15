@@ -29,14 +29,10 @@ const style = {
 function GalleryCommentsModal({ commentsModalOpen, closeCommentsModal, set }) {
   const dispatch = useDispatch();
   // local state for storing inputs
-  const [input, setInput] = useState({
-    id: set.id,
-    comments: "",
-  });
+  const [input, setInput] = useState({comments: ''});
 
   const handleUpdate = () => {
-    const payload = input;
-    dispatch({ type: "UPDATE_COMMENTS", payload });
+    dispatch({ type: "UPDATE_COMMENTS", payload: {comments: input.comments, setid:set.id }});
   };
 
   return (
