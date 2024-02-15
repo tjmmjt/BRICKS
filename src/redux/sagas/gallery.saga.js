@@ -11,6 +11,7 @@ function* fetchStats(action){
     const stats = yield axios.get(`/api/gallery/stats/${action.payload}`)
     console.log('stats.data:', stats.data)
     yield put({type: 'SET_STATS', payload: stats.data[0]})
+    
   } catch (error) {
     console.error('error fetching stats')
   }
