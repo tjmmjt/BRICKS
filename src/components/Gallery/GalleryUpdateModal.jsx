@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useDispatch } from "react-redux";
 import EditIcon from '@mui/icons-material/Edit';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const style = {
   position: "absolute",
@@ -25,20 +25,28 @@ const style = {
   textAlign: "center",
 };
 
-function GalleryUpdateModal({ updateModalOpen, closeUpdateModal, set, userid }) {
+function GalleryUpdateModal({ updateModalOpen, closeUpdateModal, set }) {
   const dispatch = useDispatch();
   // local state for storing inputs
+
   const [input, setInput] = useState({
     name: set.name,
     num_parts: set.num_parts,
     year: set.year,
     theme_id: set.theme_id,
-    id: set.id,
   });
 
-  const handleUpdate = async () => {
-    const payload = {input: input, userid: userid};
+
+  const handleUpdate = () => {
+    const payload = {input: input, setid: set.id};
+    console.log("UPDATE PAYLOAD", payload)
     dispatch({ type: "UPDATE_SET", payload });
+    setInput({
+      name: set.name,
+      num_parts: set.num_parts,
+      year: set.year,
+      theme_id: set.theme_id,
+    })
   };
 
   return (

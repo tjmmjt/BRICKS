@@ -8,8 +8,8 @@ function* fetchStats(action){
   
   try {
     
-    const stats = yield axios.get(`/api/gallery/stats/${action.payload}`)
-    console.log('stats.data:', stats.data)
+    const stats = yield axios.get(`/api/gallery/stats/`)
+    // console.log('stats.data:', stats.data)
     yield put({type: 'SET_STATS', payload: stats.data[0]})
     
   } catch (error) {
@@ -56,7 +56,7 @@ function* updateSet(action){
   // console.log('id:', action.payload.id)
   // PATCH
   try {
-    yield axios.patch(`/api/gallery/`, action.payload.input)
+    yield axios.patch(`/api/gallery/`, action.payload)
     yield put({type: 'FETCH_GALLERY'})
   } catch (error) {
     console.error('Error in updateSet(*)', error)
