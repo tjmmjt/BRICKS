@@ -26,7 +26,7 @@ const style = {
 
 
 
-function GalleryCommentsModal({ commentsModalOpen, closeCommentsModal, set }) {
+function GalleryCommentsModal({ commentsModalOpen, closeCommentsModal, set, userid }) {
   const dispatch = useDispatch();
   // local state for storing inputs
   const [input, setInput] = useState({
@@ -35,7 +35,7 @@ function GalleryCommentsModal({ commentsModalOpen, closeCommentsModal, set }) {
   });
 
   const handleUpdate = () => {
-    const payload = input;
+    const payload = {comment: input, userid: userid};
     dispatch({ type: "UPDATE_COMMENTS", payload });
   };
 

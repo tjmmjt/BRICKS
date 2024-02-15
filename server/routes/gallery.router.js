@@ -46,13 +46,17 @@ router.post("/", (req, res) => {
 
 // ! GET all LEGO sets
 // TODO get only the LEGO sets for the specific user
-router.get("/", (req, res) => {
+router.get("/:id", (req, res) => {
   const queryText = `
     SELECT * FROM "gallery_item"
-    ORDER BY id DESC;
+    WHERE user_id=($1)
+    ORDER BY id DESC
+    ;
   `;
+  const queryParams = [req.params.id]
+  // console.log('QUERYPARAMS', queryParams)
   pool
-    .query(queryText)
+    .query(queryText, queryParams)
     .then((result) => {
       res.send(result.rows);
     })

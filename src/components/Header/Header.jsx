@@ -32,7 +32,7 @@ function Header() {
           Welcome, {user.username}!
         </Typography>
         <Typography
-          component="subtitle"
+          variant="Subtitle"
           color="white"
           sx={{ textShadow: "2px 2px 5px black" }}
         >
