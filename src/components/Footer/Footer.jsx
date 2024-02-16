@@ -11,7 +11,7 @@ function Footer() {
   return (
       <footer>
       <Nav />
-        &copy; Prime Digital Academy
+        &copy; Tucker J. Melssen
       </footer>
   )
 }
