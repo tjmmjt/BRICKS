@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import GalleryCard from "./GalleryCard";
 import Header from "../Header/Header";
+import FloatingAddBtn from "./FloatingAddBtn";
 
 function Gallery() {
   const dispatch = useDispatch();
@@ -25,6 +26,11 @@ function Gallery() {
             </Grid>
           ))}
         </Grid>
+      
+      <Container sx={{pt: 5, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+          <FloatingAddBtn />
+      </Container>
+      
       </Container>
     </>
   );
