@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import headerStyles from "./headerStyles";
 import HamburgerMenu from "./HamburgerMenu";
+import FloatingAddBtn from "../Gallery/FloatingAddBtn";
 
 function Header() {
   const user = useSelector((store) => store.user);
@@ -33,8 +34,9 @@ function Header() {
         </Typography>
       </Grid>
 
-      <Grid item xs={4} textAlign="right" pr={10}>
-        <HamburgerMenu />
+      <Grid item xs={4} textAlign="right" pr={10} sx={{display: 'flex', justifyContent: 'end', alignItems: 'center'}}>
+        <Box mr={3} variant='info'><FloatingAddBtn /></Box>
+        <Box><HamburgerMenu /></Box>
       </Grid>
     </Grid>
   );
