@@ -31,13 +31,6 @@ function Header() {
         >
           Welcome, {user.username}!
         </Typography>
-        <Typography
-          variant="Subtitle"
-          color="white"
-          sx={{ textShadow: "2px 2px 5px black" }}
-        >
-          User ID: {user.id}
-        </Typography>
       </Grid>
 
       <Grid item xs={4} textAlign="right" pr={10}>
