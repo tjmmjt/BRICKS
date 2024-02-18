@@ -43,7 +43,7 @@ function AddSet() {
     <Header />
     
     <Container>
-      <Card sx={{ maxWidth: 345, m: 'auto',mt: 4, p: 2}}>
+      <Card sx={{ maxWidth: 345, m: 'auto',mt: 5, p: 2}}>
         <CardHeader title="Add Set" />
         <CardContent sx={{pt: 0.5}}>
           <Typography variant="body2">

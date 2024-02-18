@@ -4,4 +4,7 @@ footer {
   padding: 0px;
   text-align: center;
   color: rgba(255, 255, 255, 0.407);
+  
+  padding-top: 5rem;
+  padding-bottom: 2rem
 }
