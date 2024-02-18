@@ -45,6 +45,7 @@ export default function HamburgerMenu() {
         <MenuItem onClick={() => history.push('/user')}>Dashboard</MenuItem>
         <MenuItem onClick={() => history.push('/add_set')}>Add Set</MenuItem>
         <MenuItem onClick={() => history.push('/gallery')}>Gallery</MenuItem>
+        <MenuItem onClick={() => history.push('/info')}>Info</MenuItem>
         <MenuItem onClick={() => dispatch({ type: 'LOGOUT' })}>Logout</MenuItem>
       </Menu>
     </div>
