@@ -16,7 +16,7 @@ function LoginPage() {
         sx={{ minHeight: '100vh' }}
       >
         <Grid item>
-          <img src="../../public/BRICKS_no_background.png" alt="" height={400}/>
+          <img src="public/BRICKS_no_background.png" alt="" height={400}/>
         </Grid>
         <Grid item xs={3}>
           <LoginForm />
