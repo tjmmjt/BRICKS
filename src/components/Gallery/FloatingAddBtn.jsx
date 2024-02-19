@@ -9,8 +9,9 @@ export default function FloatingAddBtn() {
   const history = useHistory()
   return (
     <Box sx={{ '& > :not(style)': { m: 1 } }}>
-      <Fab color="primary" aria-label="add" onClick={() => history.push('/add_set')}>
+      <Fab color="primary" variant='extended' aria-label="add" onClick={() => history.push('/add_set')}>
         <AddIcon />
+        Add
       </Fab>
     </Box>
   );

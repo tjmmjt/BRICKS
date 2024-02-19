@@ -22,7 +22,7 @@ function Dashboard() {
   <>
     <Header />
 
-      <Box mx={'auto'} textAlign="center"  maxWidth={'35%'}>
+      <Box mx={'auto'} textAlign="center"  maxWidth={'35%'} sx={{pt: 5}}>
         <Card
           sx={{
             mt: 2,

@@ -44,7 +44,7 @@ function GalleryCard({ set, userid }) {
       <CardContent>
         <Typography variant="body1"><b>Total Pieces:</b> {set.num_parts}</Typography>
         <Typography variant="body1"><b>Year:</b> {set.year}</Typography>
-        <Typography variant="body1"><b>Genre:</b> {set.theme_id}</Typography>
+        <Typography variant="body1"><b>Category:</b> {set.theme_id}</Typography>
         <Typography variant="body1"><b>Comments:</b></Typography>
         <Typography variant="body2" color="text.secondary">
             {set.comments}

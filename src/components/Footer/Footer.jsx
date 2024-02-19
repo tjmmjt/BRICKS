@@ -10,8 +10,8 @@ import './Footer.css';
 function Footer() {
   return (
       <footer>
-      <Nav />
-        &copy; Tucker J. Melssen
+        <Nav />
+          &copy; Tucker J. Melssen
       </footer>
   )
 }

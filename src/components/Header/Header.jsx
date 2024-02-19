@@ -35,7 +35,7 @@ function Header() {
       </Grid>
 
       <Grid item xs={4} textAlign="right" pr={10} sx={{display: 'flex', justifyContent: 'end', alignItems: 'center'}}>
-        <Box mr={3} variant='info'><FloatingAddBtn /></Box>
+        {/* <Box mr={3} variant='info'><FloatingAddBtn /></Box> */}
         <Box><HamburgerMenu /></Box>
       </Grid>
     </Grid>
