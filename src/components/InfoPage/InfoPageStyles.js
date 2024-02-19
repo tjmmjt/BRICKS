@@ -17,7 +17,7 @@ const styles = {
     },
     
     ul: {
-        color: 'white'
+        color: 'white',
     },
     
     img: {
