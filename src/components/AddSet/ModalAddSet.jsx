@@ -23,8 +23,8 @@ const style = {
 function ModalAddSet(props) {
   // initialize dispatch and useSelector with search and user data
   const dispatch = useDispatch()
-  const searchReducer = useSelector(store => store.searchReducer)
-  const user = useSelector(store => store.user)
+  const searchReducer = useSelector(store => store?.searchReducer)
+  const user = useSelector(store => store?.user)
   const history = useHistory()
   
   
@@ -47,9 +47,9 @@ function ModalAddSet(props) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h4" component="h2">
-            {searchReducer.name}
+            {searchReducer?.name}
           </Typography>
-          <Container><img src={searchReducer.set_img_url} alt={searchReducer.name} /></Container>
+          <Container><img src={searchReducer?.set_img_url} alt={searchReducer?.name} /></Container>
           <Button onClick={handleAdd} variant='contained' color='primary' sx={{mt: 2}}>Add</Button>
         </Box>
       </Modal>
