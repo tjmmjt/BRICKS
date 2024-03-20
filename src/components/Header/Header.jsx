@@ -1,13 +1,12 @@
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import headerStyles from "./headerStyles";
 import HamburgerMenu from "./HamburgerMenu";
-import FloatingAddBtn from "../Gallery/FloatingAddBtn";
 
 function Header() {
-  const user = useSelector((store) => store.user);
+  const user = useSelector((store) => store?.user);
   const history = useHistory();
 
   return (
@@ -30,7 +29,7 @@ function Header() {
           color="white"
           sx={{ textShadow: "2px 2px 5px black" }}
         >
-          Welcome, {user.username}!
+          Welcome, {user?.username}!
         </Typography>
       </Grid>
 

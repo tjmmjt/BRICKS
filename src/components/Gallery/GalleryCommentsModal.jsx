@@ -32,7 +32,7 @@ function GalleryCommentsModal({ commentsModalOpen, closeCommentsModal, set }) {
   const [input, setInput] = useState({comments: ''});
 
   const handleUpdate = () => {
-    dispatch({ type: "UPDATE_COMMENTS", payload: {comments: input.comments, setid:set.id }});
+    dispatch({ type: "UPDATE_COMMENTS", payload: {comments: input?.comments, setid:set?.id }});
   };
 
   return (

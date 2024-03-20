@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import styles from "./InfoPageStyles";
 import Header from "../Header/Header";
 // This is one of our simplest components
@@ -74,7 +74,7 @@ function InfoPage() {
           <Grid item xs={3} textAlign="center">
             <h4>Connect on LinkedIn</h4>
             <img
-              src="../../public/LinkedIn_Profile_QR.png"
+              src="/LinkedIn_Profile_QR.png"
               alt="GitHub QR Code"
               height="200px"
             />
@@ -83,7 +83,7 @@ function InfoPage() {
           <Grid item xs={3} textAlign="center">
             <h4>View my GitHub</h4>
             <img
-              src="../../public/GitHub_Profile_QR.png"
+              src="/GitHub_Profile_QR.png"
               alt="GitHub QR Code"
               height="200px"
             />

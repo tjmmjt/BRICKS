@@ -30,22 +30,22 @@ function GalleryUpdateModal({ updateModalOpen, closeUpdateModal, set }) {
   // local state for storing inputs
 
   const [input, setInput] = useState({
-    name: set.name,
-    num_parts: set.num_parts,
-    year: set.year,
-    theme_id: set.theme_id,
+    name: set?.name,
+    num_parts: set?.num_parts,
+    year: set?.year,
+    theme_id: set?.theme_id,
   });
 
 
   const handleUpdate = () => {
-    const payload = {input: input, setid: set.id};
+    const payload = {input: input, setid: set?.id};
     console.log("UPDATE PAYLOAD", payload)
     dispatch({ type: "UPDATE_SET", payload });
     setInput({
-      name: set.name,
-      num_parts: set.num_parts,
-      year: set.year,
-      theme_id: set.theme_id,
+      name: set?.name,
+      num_parts: set?.num_parts,
+      year: set?.year,
+      theme_id: set?.theme_id,
     })
   };
 
@@ -67,7 +67,7 @@ function GalleryUpdateModal({ updateModalOpen, closeUpdateModal, set }) {
               id="update-name"
               label="Name"
               variant="standard"
-              defaultValue={set.name}
+              defaultValue={set?.name}
               onChange={(event) =>
                 setInput({ ...input, name: event.target.value })
               }
@@ -88,7 +88,7 @@ function GalleryUpdateModal({ updateModalOpen, closeUpdateModal, set }) {
               type="number"
               label="Year"
               variant="standard"
-              defaultValue={set.year}
+              defaultValue={set?.year}
               onChange={(event) =>
                 setInput({ ...input, year: Number(event.target.value) })
               }
@@ -99,7 +99,7 @@ function GalleryUpdateModal({ updateModalOpen, closeUpdateModal, set }) {
               type="number"
               label="Genre"
               variant="standard"
-              defaultValue={set.theme_id}
+              defaultValue={set?.theme_id}
               onChange={(event) =>
                 setInput({ ...input, theme_id: Number(event.target.value) })
               }

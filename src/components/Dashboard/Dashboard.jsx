@@ -7,12 +7,12 @@ import Header from "../Header/Header";
 
 function Dashboard() {
   useEffect(() => {
-    dispatch({ type: "FETCH_STATS", payload: user.id });
+    dispatch({ type: "FETCH_STATS", payload: user?.id });
   }, []);
   const history = useHistory()
   const dispatch = useDispatch();
-  const user = useSelector((store) => store.user);
-  const stats = useSelector((store) => store.statsReducer);
+  const user = useSelector((store) => store?.user);
+  const stats = useSelector((store) => store?.statsReducer);
   //   console.log("USER:", user);
   //   console.log("STATS", stats);
 
@@ -49,14 +49,14 @@ function Dashboard() {
 
           <Box my={3}>
             <Typography component="h6" variant="h5" color="white">
-              <b>Total Sets:</b> {stats.total_sets}
+              <b>Total Sets:</b> {stats?.total_sets}
             </Typography>
             <Typography component="h6" variant="h5" color="white">
               <b>Total Pieces:</b>{" "}
-              {Number(stats.total_num_parts).toLocaleString("en-US")}
+              {Number(stats?.total_num_parts).toLocaleString("en-US")}
             </Typography>
             <Typography component="h6" variant="h5" color="white">
-              <b>Categories:</b> {stats.all_theme_id}
+              <b>Categories:</b> {stats?.all_theme_id}
             </Typography>
           </Box>
         </Card>

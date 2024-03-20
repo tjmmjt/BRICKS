@@ -6,7 +6,7 @@ import { Container } from '@mui/material';
 
 function UserPage(props) {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
-  const user = useSelector((store) => store.user);
+  const user = useSelector((store) => store?.user);
   return (
       <Dashboard user={user} />
   );
