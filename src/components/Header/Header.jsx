@@ -15,7 +15,7 @@ function Header() {
       <Grid item xs={4} pl={10}>
         <Link to="/user">
           <img
-            src="public/BRICKS_no_background.png"
+            src="/BRICKS_no_background.png"
             alt="Logo / Home"
             height={130}
           />
