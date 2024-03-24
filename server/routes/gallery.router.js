@@ -47,7 +47,7 @@ router.post("/", (req, res) => {
 // ! GET all LEGO sets
 // TODO get only the LEGO sets for the specific user
 router.get("/", (req, res) => {
-  console.log('REQ.USER:', req.user)
+  // console.log('REQ.USER:', req.user)
   const queryText = `
     SELECT * FROM "gallery_item"
     WHERE user_id=($1)
