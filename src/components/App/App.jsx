@@ -35,7 +35,6 @@ function App() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
-    dispatch({ type: 'FETCH_GALLERY' });
   }, [dispatch]);
 
   return (
