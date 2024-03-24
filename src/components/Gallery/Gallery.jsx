@@ -10,9 +10,9 @@ function Gallery() {
   const store = useSelector((store) => store?.galleryReducer);
   const userid = useSelector(store => store?.user.id)
   // console.log('galleryReducer', store)
-  console.log('userid', userid)
+  // console.log('userid', userid)
   useEffect(() => {
-    dispatch({ type: "FETCH_GALLERY", payload: userid});
+    dispatch({ type: "FETCH_GALLERY"});
   }, []);
 
   return (
