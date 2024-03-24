@@ -31,10 +31,11 @@ import Gallery from '../Gallery/Gallery';
 function App() {
   const dispatch = useDispatch();
 
-  const user = useSelector(store => store.user);
+  const user = useSelector(store => store?.user);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
+    dispatch({ type: 'FETCH_GALLERY' });
   }, [dispatch]);
 
   return (

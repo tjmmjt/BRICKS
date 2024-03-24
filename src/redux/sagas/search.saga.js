@@ -20,11 +20,10 @@ function* searchLego(action) {
 // ! DB POST 
 // post search result and user.id to gallery_item
 function* addSet(action){
-    // const payload = useSelector(store => ({searchReducer: store.searchReducer, user: store.user}))
     try {
         yield console.log("Payload:", action.payload)
         yield axios.post('/api/gallery', action.payload)
-        yield put({type: 'FETCH_GALLERY', payload: action.payload.userid})
+        yield put({type: 'FETCH_GALLERY' })
     } catch (error) {
         console.error('Error in addSet(*)')
     }
