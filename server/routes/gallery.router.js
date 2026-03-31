@@ -51,11 +51,10 @@ router.get("/", (req, res) => {
   const queryText = `
     SELECT * FROM "gallery_item"
     WHERE user_id=($1)
-    ORDER BY id DESC
+    ORDER BY favorite DESC, id ASC
     ;
   `;
   const queryParams = [req.user.id]
-  // console.log('QUERYPARAMS', queryParams)
   pool
     .query(queryText, queryParams)
     .then((result) => {
